@@ -2,14 +2,16 @@
 
 ## users テーブル
 
-| Column    | Type    | Options     |
-| --------- | ------- | ----------- |
-| nickname  | string  | null: false |
-| mail      | string  | null: false |
-| password  | string  | null: false |
-| name      | string  | null: false |
-| name_kana | string  | null: false |
-| birthday  | integer | null: false |
+| Column              | Type    | Options     |
+| ------------------- | ------- | ----------- |
+| nickname            | string  | null: false |
+| email               | string  | null: false |
+| encrypted_password  | string  | null: false |
+| last_name           | string  | null: false |
+| first_name          | string  | null: false |
+| last_name_kana      | string  | null: false |
+| first_name_kana     | string  | null: false |
+| birthday            | date    | null: false |
 
 ### Association
 
@@ -23,7 +25,6 @@
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| image               | string     | null: false                    |
 | product_name        | text       | null: false                    |
 | product_description | text       | null: false                    |
 | category            | string     | null: false                    |
