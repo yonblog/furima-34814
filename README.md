@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchasingmanagements
+- has_many :purchasing_managements
 
 
 
@@ -38,11 +38,11 @@
 ### Association
 
 - belongs_to :user
-- has_many :purchasingmanagements
+- has_many :purchasing_managements
 
 
 
-## personalinformations テーブル
+## personal_informations テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
@@ -53,9 +53,13 @@
 | building_name   | string     |                                |
 | phone_number    | string     | null: false                    |
 
+### Association
+
+- belongs_to :purchasing_management
 
 
-## purchasingmanagements テーブル
+
+## purchasing_managements テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -66,3 +70,4 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :personal_information
