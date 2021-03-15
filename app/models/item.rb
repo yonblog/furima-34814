@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_area
   belongs_to :delivery_days
 
-  validates :category_id, :product_condition_id, :delivery_fee_id, :delivery_area_id, :delivery_days_id, numericality: { other_than: 1 } 
+  validates :category_id, :product_condition_id, :delivery_fee_id, :delivery_area_id, :delivery_days_id, numericality: { other_than: 1, message: 'Select' } 
   
   with_options presence: true do
     validates :image
@@ -18,6 +18,7 @@ class Item < ApplicationRecord
     validates :delivery_fee_id
     validates :delivery_area_id
     validates :delivery_days_id
+    validates :price
     validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}, allow_blank: true
   end
 
