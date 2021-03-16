@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_fee
   belongs_to :delivery_area
   belongs_to :delivery_days
+  belongs_to :user
 
   with_options numericality: { other_than: 1, message: 'Select' }  do
     validates :category_id
