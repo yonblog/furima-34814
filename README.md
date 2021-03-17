@@ -44,14 +44,15 @@
 
 ## personal_informations テーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| postal_code      | string     | null: false                    |
-| delivery_area_id | integer    | null: false                    |
-| municipality     | string     | null: false                    |
-| address          | string     | null: false                    |
-| building_name    | string     |                                |
-| phone_number     | string     | null: false                    |
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| postal_code           | string     | null: false                    |
+| delivery_area_id      | integer    | null: false                    |
+| municipality          | string     | null: false                    |
+| address               | string     | null: false                    |
+| building_name         | string     |                                |
+| phone_number          | string     | null: false                    |
+| purchasing_management | references | null: false                    |
 
 ### Association
 
