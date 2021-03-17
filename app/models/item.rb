@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_area
   belongs_to :delivery_days
   belongs_to :user
+  has_one :purchasing_management
 
   with_options numericality: { other_than: 1, message: 'Select' }  do
     validates :category_id
