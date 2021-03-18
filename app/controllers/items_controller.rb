@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update]
   before_action :set_item, only: [:edit, :update, :destroy, :show]
   before_action :exhibitors_only, only: [:edit, :update, :destroy]
+  before_action :already_purchased, only: [:edit, :update]
 
   def index
     @items = Item.all.order("created_at DESC")
@@ -51,6 +52,12 @@ class ItemsController < ApplicationController
   def exhibitors_only
     unless current_user.id == @item.user_id
       redirect_to action: :index
+    end
+  end
+
+  def already_purchased
+    if @item.purchasing_management.present?
+      redirect_to root_path
     end
   end
 end
