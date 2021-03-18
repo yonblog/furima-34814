@@ -5,18 +5,18 @@ class PurchasingManagementsController < ApplicationController
 
   def index
     @personal_purchasing = PersonalPurchasing.new
-    @item = Item.find(params[:item_id])
+    set_item
   end
   
   def create
     @personal_purchasing = PersonalPurchasing.new(personal_purchasing_params)
-    @item = Item.find(params[:item_id])
+    set_item
     if @personal_purchasing.valid?
       pay_item
       @personal_purchasing.save
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
+      set_item
       render :index
     end
   end
@@ -36,7 +36,7 @@ class PurchasingManagementsController < ApplicationController
   end
   
   def non_exhibitor
-    @item = Item.find(params[:item_id])
+    set_item
     if current_user.id == @item.user_id
       redirect_to root_path
     end
@@ -46,5 +46,9 @@ class PurchasingManagementsController < ApplicationController
     if @item.purchasing_management.present?
       redirect_to root_path
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
