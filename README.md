@@ -42,7 +42,7 @@
 
 
 
-## personal_informations テーブル
+## personal_informations(購入者住所) テーブル
 
 | Column                | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
@@ -60,7 +60,7 @@
 
 
 
-## purchasing_managements テーブル
+## purchasing_managements（購入者情報） テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
