@@ -1,8 +1,8 @@
 class PurchasingManagementsController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :set_item, only: [:index, :create]
   before_action :non_exhibitor, only: [:index]
   before_action :already_purchased, only: [:index]
-  before_action :set_item, only: [:index, :create]
 
   def index
     @personal_purchasing = PersonalPurchasing.new
@@ -35,7 +35,6 @@ class PurchasingManagementsController < ApplicationController
   end
   
   def non_exhibitor
-    set_item
     if current_user.id == @item.user_id
       redirect_to root_path
     end
