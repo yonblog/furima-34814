@@ -2,15 +2,14 @@ class PurchasingManagementsController < ApplicationController
   before_action :authenticate_user!, only: [:index]
   before_action :non_exhibitor, only: [:index]
   before_action :already_purchased, only: [:index]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @personal_purchasing = PersonalPurchasing.new
-    set_item
   end
   
   def create
     @personal_purchasing = PersonalPurchasing.new(personal_purchasing_params)
-    set_item
     if @personal_purchasing.valid?
       pay_item
       @personal_purchasing.save
