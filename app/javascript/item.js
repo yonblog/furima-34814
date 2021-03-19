@@ -1,6 +1,7 @@
 function post (){
   const priceForm = document.getElementById("item-price");
-  priceForm.addEventListener('input', function(){
+  if (!priceForm){ return false;}
+  priceForm.addEventListener(`input`, function() {
     const inputData = priceForm.value;
 
     const addTaxPrice = document.getElementById("add-tax-price");
@@ -10,6 +11,6 @@ function post (){
     const extractingNumber = inputData * 0.1;
     profitPrice.innerHTML = (Math.floor(inputData - extractingNumber));
   });
-}
+};
 
 addEventListener('load', post);
