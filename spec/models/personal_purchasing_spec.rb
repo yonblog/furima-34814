@@ -23,7 +23,7 @@ RSpec.describe PersonalPurchasing, type: :model do
 
 
     context '商品購入できないとき' do
-      it 'tokunが空だと登録できない' do
+      it 'tokenが空だと登録できない' do
         @personal_purchasing.token = ''
         @personal_purchasing.valid?
         expect(@personal_purchasing.errors.full_messages).to include("Token can't be blank")
@@ -83,6 +83,11 @@ RSpec.describe PersonalPurchasing, type: :model do
         @personal_purchasing.valid?
         expect(@personal_purchasing.errors.full_messages).to include("Phone number Enter a 10- or 11-digit number")
       end
+      it 'phone_numberが12桁以上だと登録できない' do
+        @personal_purchasing.phone_number = '090123456789'
+        @personal_purchasing.valid?
+        expect(@personal_purchasing.errors.full_messages).to include("Phone number Enter a 10- or 11-digit number")
+      end
       it 'phone_numberが英数字だと登録できない' do
         @personal_purchasing.phone_number = '0901234abc'
         @personal_purchasing.valid?
@@ -97,6 +102,16 @@ RSpec.describe PersonalPurchasing, type: :model do
         @personal_purchasing.phone_number = '０９０１２３４５６７８'
         @personal_purchasing.valid?
         expect(@personal_purchasing.errors.full_messages).to include("Phone number Enter a 10- or 11-digit number")
+      end
+      it 'user_idが空だと登録できない' do
+        @personal_purchasing.user_id = nil
+        @personal_purchasing.valid?
+        expect(@personal_purchasing.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空だと登録できない' do
+        @personal_purchasing.item_id = nil
+        @personal_purchasing.valid?
+        expect(@personal_purchasing.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
